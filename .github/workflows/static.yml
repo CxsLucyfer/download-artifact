@@ -1,0 +1,137 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+- name: Download a Build Artifact
+  uses: actions/download-artifact@v2.1.1
+  with:
+    # Artifact name
+    name: # optional
+    # Destination path
+    path: # optional- name: Download a Build Artifact
+  uses: actions/download-artifact@v2.1.1
+  with:
+    # Artifact name
+    name: # optional
+    # Destination path
+    path: # optional
+    - name: Setup Jira
+  # You may pin to the exact commit or the version.
+  # uses: atlassian/gajira-cli@7b8487d76cd88bf5d50ba00c6cca6edff1ddd507
+  uses: atlassian/gajira-cli@v3
+  with:
+    # Version of the CLI to use
+    version: # optional, default is 1.0.27
+    - name: ServiceNow CI/CD Activate Plugin
+  # You may pin to the exact commit or - name: Teamwork GitHub Sync
+  # You may pin to the exact commit or the version.
+  # uses: Teamwork/github-sync@42dcac69eb5a41fad0d518efeb6aecf1e45f8d01
+  uses: Teamwork/github-sync@v1.3.3
+  with:
+    # GitHub token
+    GITHUB_TOKEN: 
+    # Teamwork URI
+    TEAMWORK_URI: 
+    # Teamwork API token
+    TEAMWORK_API_TOKEN: 
+    # Do you want to enable automatic tagging: true/false
+    AUTOMATIC_TAGGING: # optional
+    # The case-sensitive column name of the column you would like the task to be moved to once the PR has been opened
+    BOARD_COLUMN_OPENED: # optional, default is 
+    # The case-sensitive column name of the column you would like the task to be moved to once the PR has been merged
+    BOARD_COLUMN_MERGED: # optional, default is 
+    # The case-sensitive column name of the column you would like the task to be moved to if the PR was closed without being merged
+    BOARD_COLUMN_CLOSED: # optional, default is - name: Teamwork GitHub Sync
+  # You may pin to the exact commit or the version.
+  # uses: Teamwork/github-sync@42dcac69eb5a41fad0d518efeb6aecf1e45f8d01
+  uses: Teamwork/github-sync@v1.3.3
+  with:
+    # GitHub token
+    GITHUB_TOKEN: 
+    # Teamwork URI
+    TEAMWORK_URI: 
+    # Teamwork API token
+    TEAMWORK_API_TOKEN: 
+    # Do you want to enable automatic tagging: true/false
+    AUTOMATIC_TAGGING: # optional
+    # The case-sensitive column name of the column you would like the task to be moved to once the PR has been opened
+    BOARD_COLUMN_OPENED: # optional, default is 
+    # The case-sensitive column name of the column you would like the task to be moved to once the PR has been merged
+    BOARD_COLUMN_MERGED: # optional, default is 
+    # The case-sensitive column name of the column you would like the task to be moved to if the PR was closed without being merged
+    BOARD_COLUMN_CLOSED: # optional, default is  version.
+  # uses: ServiceNow/sncicd-plugin-activate@a12a95b41b8e026f9107d0c38f22245a5f4cf8d7
+  uses: ServiceNow/sncicd-plugin-activate@2.0.0
+  with:
+    # Plugin ID to be installed
+    pluginID: 
+    - name: Jira issue from TODO
+  # You may pin to the exact commit or the version.
+  # uses: atlassian/gajira-todo@b172b724b495db556f083b5155d71c1fc107f80e
+  uses: atlassian/gajira-todo@v3
+  with:
+    # Key of the project
+    project: 
+    # Type of the issue to be created. Example: 'Incident'
+    issuetype: 
+    # Issue description
+    description: # optional
+    
+    - name: Jira Add Comment
+  # You may pin to the exact commit or the version.
+  # uses: atlassian/gajira-comment@76589d6b6d0b94b1ca6b01171c01a6affb5d6701
+  uses: atlassian/gajira-comment@v3
+  with:
+    # Key of the issue to be commented on
+    issue: 
+    # Comment
+    comment: 
+    - name: Jira Login
+  # You may pin to the exact commit or the version.
+  # uses: atlassian/gajira-login@ca13f8850ea309cf44a6e4e0c49d9aa48ac3ca4c
+  uses: atlassian/gajira-login@v3
+  
+  
+    
+    
+    
+    
